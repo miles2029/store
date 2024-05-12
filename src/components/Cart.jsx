@@ -21,7 +21,7 @@ function Cart({ cartItems }) {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ name: item.name, price: item.price * 100 }),
+        body: JSON.stringify({ productName: item.name, price: item.price * 100 }),
       }
     );
 
