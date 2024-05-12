@@ -9,7 +9,7 @@ function ProductCard({ name, price, image, onClick }) {
       <img src={image} alt={name} />
       <div>
         <h4>{name}</h4>
-        <p>P {price}</p>
+        <p>$ {price}</p>
       </div>
     </div>
   );

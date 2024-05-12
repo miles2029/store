@@ -3,12 +3,14 @@ import { collection, getDocs } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { db } from "../configs/firebase";
 import { Carousel } from "react-responsive-carousel";
-import { Link } from "react-router-dom"; // Import Link from React Router
+import { Link } from "react-router-dom";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import "../css/homepage.css";
+import PropTypes from "prop-types";
+
 import ProductCard from "./ProductCard";
 
-function HomePage() {
+function HomePage({ cartItemCount }) {
   const [shoeList, setShoeList] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -34,8 +36,17 @@ function HomePage() {
   return (
     <div className="Homepage">
       <div>
-        <h1>Jordan</h1>
-        <p>Shoes</p>
+        <div>
+          <h1>Jordan</h1>
+          <p>Shoes</p>
+        </div>
+        <div>
+          <Link to="/cart" className="link">
+            <button>
+              Cart {cartItemCount !== 0 ? `(${cartItemCount})` : ""}
+            </button>
+          </Link>
+        </div>
       </div>
       <Carousel
         showThumbs={false}
@@ -79,5 +90,9 @@ function HomePage() {
     </div>
   );
 }
+
+HomePage.propTypes = {
+  cartItemCount: PropTypes.number.isRequired, // cartItemCount is a required number
+};
 
 export default HomePage;
