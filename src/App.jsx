@@ -16,7 +16,7 @@ function App() {
     <Router>
       <Routes>
         <Route
-          path="/product"
+          path="*"
           element={<HomePage cartItemCount={cartItems.length} />}
         />
         <Route
@@ -29,7 +29,6 @@ function App() {
           }
         />
         <Route path="/cart" element={<Cart cartItems={cartItems} />} />
-        <Route path="*" element={<Error404 />} />
       </Routes>
     </Router>
   );
